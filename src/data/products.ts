@@ -1,0 +1,151 @@
+import type { Product } from '../types';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Premium Wireless Headphones',
+    description: 'Experience unparalleled sound quality with our industry-leading noise cancellation technology. Features 30-hour battery life and ultra-comfortable ear cushions.',
+    category: 'Electronics',
+    price: 299.99,
+    originalPrice: 349.99,
+    discountPercentage: 14,
+    rating: 4.8,
+    reviewCount: 1245,
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#000000', '#ffffff', '#00f2fe'],
+    isNew: true
+  },
+  {
+    id: '2',
+    name: 'Smart Watch Pro',
+    description: 'Advanced health monitoring, GPS tracking, and seamless smartphone integration in a sleek aerospace-grade aluminum body.',
+    category: 'Electronics',
+    price: 199.50,
+    originalPrice: 249.00,
+    discountPercentage: 20,
+    rating: 4.6,
+    reviewCount: 890,
+    image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#333333', '#e0e0e0']
+  },
+  {
+    id: '3',
+    name: 'Minimal Sneakers',
+    description: 'Handcrafted from premium materials. These minimal sneakers offer perfect everyday comfort without compromising on style.',
+    category: 'Shoes',
+    price: 129.99,
+    rating: 4.9,
+    reviewCount: 432,
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1000&auto=format&fit=crop',
+    sizes: ['7', '8', '9', '10', '11', '12'],
+    colors: ['#ffffff', '#000000', '#8b4513']
+  },
+  {
+    id: '4',
+    name: 'Premium Everyday Backpack',
+    description: 'Weather-resistant, modular backpack designed for creators, commuters, and travelers. Features dedicated laptop sleeve and quick-access pockets.',
+    category: 'Accessories',
+    price: 145.00,
+    originalPrice: 160.00,
+    discountPercentage: 9,
+    rating: 4.7,
+    reviewCount: 654,
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#1a1a1a', '#4a4a4a', '#2c3e50']
+  },
+  {
+    id: '5',
+    name: 'Mechanical Keyboard Pro',
+    description: 'Tactile, responsive, and fully customizable mechanical keyboard with per-key RGB lighting and hot-swappable switches.',
+    category: 'Electronics',
+    price: 179.99,
+    rating: 4.9,
+    reviewCount: 1102,
+    image: 'https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=1000&auto=format&fit=crop',
+    isNew: true
+  },
+  {
+    id: '6',
+    name: 'Ergonomic Wireless Mouse',
+    description: 'Designed to reduce wrist strain, this advanced wireless mouse features customizable buttons and ultra-precise tracking on any surface.',
+    category: 'Electronics',
+    price: 89.99,
+    originalPrice: 109.99,
+    discountPercentage: 18,
+    rating: 4.5,
+    reviewCount: 743,
+    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#ffffff', '#000000']
+  },
+  {
+    id: '7',
+    name: 'Smart Sunglasses',
+    description: 'Integrated augmented reality display with directional audio. Stay connected while protecting your eyes with premium polarized lenses.',
+    category: 'Accessories',
+    price: 249.00,
+    rating: 4.3,
+    reviewCount: 215,
+    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1000&auto=format&fit=crop',
+    isNew: true
+  },
+  {
+    id: '8',
+    name: 'Modern Desk Lamp',
+    description: 'Architectural desk lamp with adjustable color temperature, wireless charging base, and auto-dimming functionality.',
+    category: 'Home',
+    price: 119.50,
+    originalPrice: 149.00,
+    discountPercentage: 20,
+    rating: 4.8,
+    reviewCount: 512,
+    image: 'https://images.unsplash.com/photo-1534346808794-5553b47c0b74?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#000000', '#silver']
+  },
+  {
+    id: '9',
+    name: 'Fitness Smart Band',
+    description: 'Ultra-lightweight activity tracker with continuous heart rate monitoring, sleep analysis, and 14-day battery life.',
+    category: 'Electronics',
+    price: 49.99,
+    rating: 4.4,
+    reviewCount: 3120,
+    image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b0?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#000000', '#ff0000', '#0000ff']
+  },
+  {
+    id: '10',
+    name: 'Premium Cotton Hoodie',
+    description: 'Heavyweight, exceptionally soft organic cotton hoodie. Designed for an oversized, comfortable fit that lasts years.',
+    category: 'Fashion',
+    price: 85.00,
+    rating: 4.7,
+    reviewCount: 890,
+    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['#808080', '#000000', '#000080']
+  },
+  {
+    id: '11',
+    name: 'Portable Bluetooth Speaker',
+    description: 'Rugged, waterproof design with immersive 360-degree sound and surprisingly deep bass. Perfect for any adventure.',
+    category: 'Electronics',
+    price: 129.99,
+    originalPrice: 159.99,
+    discountPercentage: 19,
+    rating: 4.6,
+    reviewCount: 1432,
+    image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=1000&auto=format&fit=crop',
+    colors: ['#000000', '#008000', '#ff0000']
+  },
+  {
+    id: '12',
+    name: 'Pro Gaming Controller',
+    description: 'Competitive-grade wireless controller with customizable paddles, adjustable triggers, and zero-latency performance.',
+    category: 'Electronics',
+    price: 159.99,
+    rating: 4.9,
+    reviewCount: 678,
+    image: 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=1000&auto=format&fit=crop',
+    isNew: true
+  }
+];
