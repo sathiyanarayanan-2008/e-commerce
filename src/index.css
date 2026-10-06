@@ -83,3 +83,254 @@
     backface-visibility: hidden;
   }
 }
+
+/* ========================================================
+   LIQUID GLASS UI MODAL & LOGIN EXPERIENCE
+   Inspired by Dribbble Liquid Glass UI Modal Window
+   ======================================================== */
+
+@keyframes liquid-ambient-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1) rotate(10deg);
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95) rotate(-8deg);
+  }
+}
+
+@keyframes liquid-ambient-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-35px, 30px) scale(1.15) rotate(-12deg);
+  }
+  66% {
+    transform: translate(25px, -35px) scale(0.9) rotate(8deg);
+  }
+}
+
+@keyframes liquid-ambient-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.08);
+    opacity: 0.65;
+  }
+}
+
+@keyframes liquid-sheen-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  40%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+@keyframes liquid-button-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  35%, 100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes liquid-card-entry {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) translateY(24px) scale(0.94);
+    filter: blur(12px);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(1000px) translateY(-3px) scale(1.008);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes glass-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  15%, 45%, 75% {
+    transform: translateX(-7px);
+  }
+  30%, 60%, 90% {
+    transform: translateX(7px);
+  }
+}
+
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-liquid-ambient-1 {
+  animation: liquid-ambient-1 16s ease-in-out infinite;
+}
+
+.animate-liquid-ambient-2 {
+  animation: liquid-ambient-2 20s ease-in-out infinite;
+}
+
+.animate-liquid-ambient-3 {
+  animation: liquid-ambient-3 14s ease-in-out infinite;
+}
+
+.animate-sheen-sweep {
+  animation: liquid-sheen-sweep 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-btn-shine {
+  animation: liquid-button-shine 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-card-entry {
+  animation: liquid-card-entry 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-glass-shake {
+  animation: glass-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-float-badge {
+  animation: float-badge 4s ease-in-out infinite;
+}
+
+/* Liquid Glass Card Layering */
+.liquid-glass-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(32px) saturate(190%) contrast(102%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(102%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    0 30px 60px -15px rgba(10, 25, 47, 0.18),
+    0 10px 25px -5px rgba(0, 242, 254, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 2px 4px 0 rgba(255, 255, 255, 0.8) inset,
+    0 -1px 2px 0 rgba(0, 0, 0, 0.04) inset;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+
+.dark .liquid-glass-card {
+  background: rgba(10, 25, 47, 0.72);
+  backdrop-filter: blur(36px) saturate(200%) contrast(105%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 35px 70px -15px rgba(2, 6, 23, 0.75),
+    0 0 45px rgba(0, 242, 254, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 1px 2px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -2px 6px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+/* Realistic specular refraction border highlight */
+.liquid-glass-specular-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(0, 242, 254, 0.35) 25%,
+    rgba(255, 255, 255, 0.08) 55%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.dark .liquid-glass-specular-border {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(0, 242, 254, 0.45) 30%,
+    rgba(255, 255, 255, 0.04) 60%,
+    rgba(79, 172, 254, 0.25) 100%
+  );
+}
+
+/* Liquid input element */
+.liquid-glass-input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.03),
+    0 1px 1px rgba(255, 255, 255, 0.8) inset;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-input:focus {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 242, 254, 0.8);
+  box-shadow: 
+    0 0 0 3px rgba(0, 242, 254, 0.2),
+    0 4px 12px rgba(0, 242, 254, 0.12),
+    0 1px 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.dark .liquid-glass-input {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.25),
+    0 1px 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.dark .liquid-glass-input:focus {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(0, 242, 254, 0.8);
+  box-shadow: 
+    0 0 0 3px rgba(0, 242, 254, 0.25),
+    0 4px 16px rgba(0, 242, 254, 0.2),
+    0 1px 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-liquid-ambient-1,
+  .animate-liquid-ambient-2,
+  .animate-liquid-ambient-3,
+  .animate-sheen-sweep,
+  .animate-btn-shine,
+  .animate-float-badge {
+    animation: none !important;
+  }
+  
+  .animate-card-entry {
+    animation: simple-fade 0.25s ease-out forwards !important;
+  }
+  
+  .liquid-glass-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@keyframes simple-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

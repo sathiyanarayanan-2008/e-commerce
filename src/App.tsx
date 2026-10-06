@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { FilterSidebar } from './components/FilterSidebar';
 import { ProductGrid } from './components/ProductGrid';
 import { CartDrawer } from './components/CartDrawer';
+import { LoginModal } from './components/LoginModal';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       
       <Footer />
       <CartDrawer />
+      <LoginModal />
     </div>
   );
 }

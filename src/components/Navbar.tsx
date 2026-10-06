@@ -3,15 +3,18 @@ import { ShoppingBag, Heart, Search, Menu, X, Moon, Sun, User } from 'lucide-rea
 import { useCart } from '../contexts/CartContext';
 import { useStore } from '../contexts/StoreContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Button } from './ui';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   
   const { cartCount, setIsCartOpen } = useCart();
   const { wishlist, filters, setFilters } = useStore();
   const { theme, setTheme } = useTheme();
+  const { user, isAuthenticated, openLogin, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,9 +91,47 @@ export function Navbar() {
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </Button>
 
-          <Button variant="ghost" size="icon" className="relative group hidden sm:flex">
-            <User className="w-5 h-5" />
-          </Button>
+          <div className="relative hidden sm:block">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className={`relative group ${isAuthenticated ? 'text-secondary-dark dark:text-secondary' : ''}`}
+              onClick={() => {
+                if (isAuthenticated) {
+                  setIsUserMenuOpen(!isUserMenuOpen);
+                } else {
+                  openLogin('login');
+                }
+              }}
+              title={isAuthenticated ? user?.name : 'Sign In'}
+            >
+              <User className="w-5 h-5" />
+              {isAuthenticated && (
+                <span className="absolute bottom-1 right-1 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-background" />
+              )}
+            </Button>
+
+            {/* Logged in User Dropdown (Liquid Glass Micro-card) */}
+            {isAuthenticated && isUserMenuOpen && (
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-2xl p-3 liquid-glass-card shadow-xl z-50 animate-in fade-in zoom-in-95 duration-200">
+                <div className="px-2 py-1.5 border-b border-border/40">
+                  <p className="text-xs font-semibold text-foreground truncate">{user?.name}</p>
+                  <p className="text-[11px] text-muted-foreground truncate">{user?.email}</p>
+                </div>
+                <div className="mt-2 space-y-1">
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsUserMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1.5 text-xs text-destructive hover:bg-destructive/10 rounded-lg transition-colors font-medium"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
 
           <Button variant="ghost" size="icon" className="relative group">
             <Heart className="w-5 h-5 group-hover:text-destructive transition-colors" />
@@ -131,6 +172,19 @@ export function Navbar() {
             <a href="#shop" className="px-2 py-2 font-medium hover:bg-muted rounded-md transition-colors">Shop</a>
             <a href="#categories" className="px-2 py-2 font-medium hover:bg-muted rounded-md transition-colors">Categories</a>
             <a href="#deals" className="px-2 py-2 font-medium hover:bg-muted rounded-md transition-colors text-destructive">Deals</a>
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                if (isAuthenticated) {
+                  logout();
+                } else {
+                  openLogin('login');
+                }
+              }}
+              className="text-left px-2 py-2 font-medium text-secondary-dark dark:text-secondary hover:bg-muted rounded-md transition-colors flex items-center justify-between"
+            >
+              <span>{isAuthenticated ? `Signed in as ${user?.name} (Sign Out)` : 'Sign In / Account'}</span>
+            </button>
           </nav>
         </div>
       </div>
